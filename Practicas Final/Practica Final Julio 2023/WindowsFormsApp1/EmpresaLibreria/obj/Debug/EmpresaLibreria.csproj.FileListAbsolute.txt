@@ -1,6 +1,0 @@
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\bin\Debug\EmpresaLibreria.dll
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\bin\Debug\EmpresaLibreria.pdb
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\obj\Debug\EmpresaLibreria.csproj.AssemblyReference.cache
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\obj\Debug\EmpresaLibreria.csproj.CoreCompileInputs.cache
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\obj\Debug\EmpresaLibreria.dll
-D:\Microsoft Visual Studio\Repositorios C#\Programación 2\Practicas Final\Practica Final Julio 2023\WindowsFormsApp1\EmpresaLibreria\obj\Debug\EmpresaLibreria.pdb
