@@ -41,17 +41,22 @@ namespace EmpresaLibreria
         {
             return null;
         }
-        public override string ToString()   //REVISAR
+        public override string ToString()
         {
-            string datos1=$"{ NroFactura} - { cliente.ToString()} - { fechaHora.ToString("dd/MM/yyyy HH:mm:ss")}";
-            /*string[] datos2 = new string[ListaItems.Count];
-            for (int i = 0; i < datos2.Length; i++)
-            {
-                Items linea = ListaItems[i];
-                datos2[i] += $"{linea.Descripcion()} - {linea.Precio().ToString()}";
-            }*/
+            string datos=$"Nº: {NroFactura} - Cliente: {cliente.ToString()} - Fecha:{fechaHora.ToString("dd/MM/yyyy HH:mm:ss")} - Precio: {precioTotal.ToString("F2")}";
 
-            return $"{datos1}";
+            return $"{datos}";
+        }
+        public string ExportarCSV()
+        {
+            string datos = "";
+            
+            datos += $"{NroFactura};";
+            datos += $"{cliente.ToString()};";
+            datos += $"{fechaHora.ToString("dd/MM/yyyy HH:mm:ss")};";
+            datos += $"{precioTotal.ToString("F2")};";
+
+            return datos;
         }
 
 

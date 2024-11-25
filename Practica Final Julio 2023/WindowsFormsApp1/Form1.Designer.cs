@@ -138,7 +138,7 @@
             // 
             // btnImportar
             // 
-            this.btnImportar.Location = new System.Drawing.Point(182, 274);
+            this.btnImportar.Location = new System.Drawing.Point(382, 274);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(75, 23);
             this.btnImportar.TabIndex = 10;
@@ -153,7 +153,7 @@
             this.groupBox2.Controls.Add(this.btnExportar);
             this.groupBox2.Location = new System.Drawing.Point(452, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(274, 312);
+            this.groupBox2.Size = new System.Drawing.Size(463, 312);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de facturas";
@@ -163,7 +163,7 @@
             this.lbFacturas.FormattingEnabled = true;
             this.lbFacturas.Location = new System.Drawing.Point(18, 26);
             this.lbFacturas.Name = "lbFacturas";
-            this.lbFacturas.Size = new System.Drawing.Size(239, 199);
+            this.lbFacturas.Size = new System.Drawing.Size(439, 199);
             this.lbFacturas.TabIndex = 0;
             // 
             // btnFacturar
@@ -207,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 372);
+            this.ClientSize = new System.Drawing.Size(930, 372);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.numCuit);
             this.Controls.Add(this.groupBox1);
