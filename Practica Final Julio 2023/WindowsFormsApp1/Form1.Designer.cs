@@ -151,7 +151,6 @@
             this.groupBox2.Controls.Add(this.lbFacturas);
             this.groupBox2.Controls.Add(this.btnImportar);
             this.groupBox2.Controls.Add(this.btnExportar);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(452, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(274, 312);
@@ -175,6 +174,7 @@
             this.btnFacturar.TabIndex = 1;
             this.btnFacturar.Text = "Generar Factura";
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // lblTotal
             // 

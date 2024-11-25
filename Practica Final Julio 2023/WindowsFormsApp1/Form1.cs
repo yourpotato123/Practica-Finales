@@ -28,12 +28,17 @@ namespace WindowsFormsApp1
             
             ProdUnitario prod = new ProdUnitario(100, "cable bipolar", "metro");
             prod.PrecioUnidad = 2.25;
+            prod.Cantidad = 1;
+
             listaItems.Add(prod);
             prod = new ProdUnitario (120, "cable 2,5mm", "metro");
             prod.PrecioUnidad = 1.25;
+            prod.Cantidad = 1;
             listaItems.Add(prod);
             prod = new ProdUnitario(130, "soldador 40w", "unidad");
             prod.PrecioUnidad = 650.00;
+            prod.Cantidad = 1;
+
             listaItems.Add(prod);
             for (int i = 0; i < listaItems.Count(); i++)
             {
@@ -45,8 +50,15 @@ namespace WindowsFormsApp1
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             string nombre = txNombre.Text;
+
             long cuit = Convert.ToInt64(numCuit.Value);
+
+            lblNombre.Text += nombre;
+            lblCuit.Text += cuit.ToString();
+            lblTotal.Text += 0.ToString();
+            
             f = new Factura(nombre, cuit);
+            //lbFacturas.Items.Add(f);
             groupBox1.Enabled = true;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -58,6 +70,7 @@ namespace WindowsFormsApp1
                 int index = lbItems.SelectedIndex;
                 objeto = listaItems[index];
                 f.AgregarItems(objeto);
+                lblTotal.Text = f.precioTotal.ToString();
             }
             catch (Exception ex)
             {
@@ -72,36 +85,36 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                binaryFormatter = new BinaryFormatter();
-                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
-                if (File.Exists(ruta))
-                {
-                    archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
-                    listaFacturas = (List<Factura>)binaryFormatter.Deserialize(archivo);
-                    archivo.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    binaryFormatter = new BinaryFormatter();
+            //    string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+            //    if (File.Exists(ruta))
+            //    {
+            //        archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+            //        listaFacturas = (List<Factura>)binaryFormatter.Deserialize(archivo);
+            //        archivo.Close();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
-                archivo = new FileStream(ruta, FileMode.OpenOrCreate,FileAccess.Write);
-                binaryFormatter.Serialize(archivo, listaFacturas);
-                archivo.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+            //    archivo = new FileStream(ruta, FileMode.OpenOrCreate,FileAccess.Write);
+            //    binaryFormatter.Serialize(archivo, listaFacturas);
+            //    archivo.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -128,6 +141,17 @@ namespace WindowsFormsApp1
         private void btnImportar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            lbFacturas.Items.Add(f);
+            listaFacturas.Add(f);
+            f = null;
+            groupBox1.Enabled = false;
+            lblNombre.Text = "Nombre:";
+            lblCuit.Text = "Cuit:";
+            lblTotal.Text = "Total:";
         }
     }
 }
