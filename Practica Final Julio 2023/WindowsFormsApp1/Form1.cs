@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         StreamWriter escritor = null;
         BinaryFormatter binaryFormater = null;
 
-        List<Items> items = new List<Items>();
+        private List<Items> listaItems = new List<Items>();
         Factura f = null;
         public Form1()
         {
@@ -28,16 +28,16 @@ namespace WindowsFormsApp1
             
             ProdUnitario prod = new ProdUnitario(100, "cable bipolar", "metro");
             prod.PrecioUnidad = 2.25;
-            items.Add(prod);
+            listaItems.Add(prod);
             prod = new ProdUnitario (120, "cable 2,5mm", "metro");
             prod.PrecioUnidad = 1.25;
-            items.Add(prod);
+            listaItems.Add(prod);
             prod = new ProdUnitario(130, "soldador 40w", "unidad");
             prod.PrecioUnidad = 650.00;
-            items.Add(prod);
-            for (int i = 0; i < items.Count(); i++)
+            listaItems.Add(prod);
+            for (int i = 0; i < listaItems.Count(); i++)
             {
-                lbItems.Items.Add(items[i].ToString());
+                lbItems.Items.Add(listaItems[i].ToString());
             }            
         }
 
@@ -51,10 +51,19 @@ namespace WindowsFormsApp1
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
-            Items objeto = null;
-            objeto = ((Items)lbItems.SelectedItem);
-            f.AgregarItems(objeto);
+            try
+            {
+                Items objeto = null;
+                //var item = lbItems.SelectedItem;
+                int index = lbItems.SelectedIndex;
+                objeto = listaItems[index];
+                f.AgregarItems(objeto);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             
             //f.ListaItems.Add(;
 

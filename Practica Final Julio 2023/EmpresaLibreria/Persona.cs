@@ -18,10 +18,10 @@ namespace EmpresaLibreria
             }
             set
             {
-                if (value.ToString().Length != 11)
-                {
-                    throw new CuitException("Cuit no valido");
-                }
+                //if (value.ToString().Length != 11)
+                //{
+                //    throw new CuitException("Cuit no valido");
+                //}
 
                 cuit = value;
             }
