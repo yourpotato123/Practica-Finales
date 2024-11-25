@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             string nombre = txNombre.Text;
-            long cuit = Convert.ToInt64(txCuit.Text);
+            long cuit = Convert.ToInt64(numCuit.Value);
             f = new Factura(nombre, cuit);
             groupBox1.Enabled = true;
         }

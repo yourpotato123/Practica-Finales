@@ -32,11 +32,12 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.txNombre = new System.Windows.Forms.TextBox();
-            this.txCuit = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numCuit = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCuit)).BeginInit();
             this.SuspendLayout();
             // 
             // lbItems
@@ -69,17 +70,10 @@
             // 
             // txNombre
             // 
-            this.txNombre.Location = new System.Drawing.Point(151, 9);
+            this.txNombre.Location = new System.Drawing.Point(131, 9);
             this.txNombre.Name = "txNombre";
-            this.txNombre.Size = new System.Drawing.Size(100, 20);
+            this.txNombre.Size = new System.Drawing.Size(120, 20);
             this.txNombre.TabIndex = 3;
-            // 
-            // txCuit
-            // 
-            this.txCuit.Location = new System.Drawing.Point(151, 35);
-            this.txCuit.Name = "txCuit";
-            this.txCuit.Size = new System.Drawing.Size(100, 20);
-            this.txCuit.TabIndex = 4;
             // 
             // label1
             // 
@@ -111,20 +105,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // numCuit
+            // 
+            this.numCuit.Location = new System.Drawing.Point(131, 35);
+            this.numCuit.Name = "numCuit";
+            this.numCuit.Size = new System.Drawing.Size(120, 20);
+            this.numCuit.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 372);
+            this.Controls.Add(this.numCuit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txCuit);
             this.Controls.Add(this.txNombre);
             this.Controls.Add(this.btnGenerar);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCuit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,10 +138,10 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.TextBox txNombre;
-        private System.Windows.Forms.TextBox txCuit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numCuit;
     }
 }
 
