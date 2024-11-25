@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numCuit = new System.Windows.Forms.NumericUpDown();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCuit)).BeginInit();
             this.SuspendLayout();
@@ -125,6 +126,8 @@
             this.Controls.Add(this.btnGenerar);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numCuit)).EndInit();
             this.ResumeLayout(false);
@@ -142,6 +145,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numCuit;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

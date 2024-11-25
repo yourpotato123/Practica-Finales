@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmpresaLibreria
 {
+    [Serializable]
     public class ProdUnitario:Items
     {
         private string nombre;

@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         FileStream archivo = null;
         StreamReader lector = null;
         StreamWriter escritor = null;
-        BinaryFormatter binaryFormater = null;
+        BinaryFormatter binaryFormatter = null;
 
         private List<Items> listaItems = new List<Items>();
         Factura f = null;
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
             }            
         }
 
-
+        
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             string nombre = txNombre.Text;
@@ -70,8 +70,38 @@ namespace WindowsFormsApp1
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                binaryFormatter = new BinaryFormatter();
+                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+                if (File.Exists(ruta))
+                {
+                    archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+                    f = (Factura)binaryFormatter.Deserialize(archivo);
+                    archivo.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-
-
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+                archivo = new FileStream(ruta, FileMode.OpenOrCreate,FileAccess.Write);
+                binaryFormatter.Serialize(archivo, f);
+                archivo.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

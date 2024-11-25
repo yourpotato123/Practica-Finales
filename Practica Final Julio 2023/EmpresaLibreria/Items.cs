@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmpresaLibreria
 {
+    [Serializable]
     public abstract class Items:IComparable<Items>
     {
         public int Codigo {  get; set; }
