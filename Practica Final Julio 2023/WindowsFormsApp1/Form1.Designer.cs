@@ -37,8 +37,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numCuit = new System.Windows.Forms.NumericUpDown();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbFacturas = new System.Windows.Forms.ListBox();
+            this.btnFacturar = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblCuit = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCuit)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbItems
@@ -51,7 +60,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(271, 77);
+            this.btnAgregar.Location = new System.Drawing.Point(282, 19);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(101, 44);
             this.btnAgregar.TabIndex = 1;
@@ -96,7 +105,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblNombre);
+            this.groupBox1.Controls.Add(this.lblCuit);
+            this.groupBox1.Controls.Add(this.lblTotal);
             this.groupBox1.Controls.Add(this.lbItems);
+            this.groupBox1.Controls.Add(this.btnFacturar);
             this.groupBox1.Controls.Add(this.btnAgregar);
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(13, 75);
@@ -113,11 +126,89 @@
             this.numCuit.Size = new System.Drawing.Size(120, 20);
             this.numCuit.TabIndex = 8;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(18, 274);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 9;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.Location = new System.Drawing.Point(182, 274);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(75, 23);
+            this.btnImportar.TabIndex = 10;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lbFacturas);
+            this.groupBox2.Controls.Add(this.btnImportar);
+            this.groupBox2.Controls.Add(this.btnExportar);
+            this.groupBox2.Enabled = false;
+            this.groupBox2.Location = new System.Drawing.Point(452, 9);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(274, 312);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Lista de facturas";
+            // 
+            // lbFacturas
+            // 
+            this.lbFacturas.FormattingEnabled = true;
+            this.lbFacturas.Location = new System.Drawing.Point(18, 26);
+            this.lbFacturas.Name = "lbFacturas";
+            this.lbFacturas.Size = new System.Drawing.Size(239, 199);
+            this.lbFacturas.TabIndex = 0;
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.Location = new System.Drawing.Point(282, 187);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(101, 44);
+            this.btnFacturar.TabIndex = 1;
+            this.btnFacturar.Text = "Generar Factura";
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(282, 155);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(34, 13);
+            this.lblTotal.TabIndex = 2;
+            this.lblTotal.Text = "Total:";
+            // 
+            // lblCuit
+            // 
+            this.lblCuit.AutoSize = true;
+            this.lblCuit.Location = new System.Drawing.Point(282, 129);
+            this.lblCuit.Name = "lblCuit";
+            this.lblCuit.Size = new System.Drawing.Size(28, 13);
+            this.lblCuit.TabIndex = 3;
+            this.lblCuit.Text = "Cuit:";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(282, 104);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(47, 13);
+            this.lblNombre.TabIndex = 4;
+            this.lblNombre.Text = "Nombre:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 372);
+            this.ClientSize = new System.Drawing.Size(739, 372);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.numCuit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -129,7 +220,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCuit)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +239,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numCuit;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnImportar;
+        private System.Windows.Forms.Button btnFacturar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lbFacturas;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblCuit;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
 

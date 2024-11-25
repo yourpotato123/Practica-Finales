@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         StreamReader lector = null;
         StreamWriter escritor = null;
         BinaryFormatter binaryFormatter = null;
-
+        List<Factura> listaFacturas = new List<Factura>();    
         private List<Items> listaItems = new List<Items>();
         Factura f = null;
         public Form1()
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                 if (File.Exists(ruta))
                 {
                     archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
-                    f = (Factura)binaryFormatter.Deserialize(archivo);
+                    listaFacturas = (List<Factura>)binaryFormatter.Deserialize(archivo);
                     archivo.Close();
                 }
             }
@@ -95,13 +95,39 @@ namespace WindowsFormsApp1
             {
                 string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
                 archivo = new FileStream(ruta, FileMode.OpenOrCreate,FileAccess.Write);
-                binaryFormatter.Serialize(archivo, f);
+                binaryFormatter.Serialize(archivo, listaFacturas);
                 archivo.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileDialog1.Title = "Seleccione la ruta para guardar el archivo...";
+                saveFileDialog1.Filter = ".csv|*.csv*";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = saveFileDialog1.FileName;
+                    archivo = new FileStream(ruta,FileMode.Open, FileAccess.Write);
+                    escritor = new StreamWriter(archivo);
+                    string lineas = "Nº Factura;Nombre y cuit;Fecha;Precio total";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fatal. Restableciendo base de datos: " + ex.Message);
+            }
+        }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
