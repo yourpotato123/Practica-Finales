@@ -45,6 +45,7 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblCuit = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCuit)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -203,6 +204,10 @@
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre:";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +252,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblCuit;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

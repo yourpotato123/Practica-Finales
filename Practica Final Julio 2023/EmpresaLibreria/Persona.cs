@@ -36,7 +36,7 @@ namespace EmpresaLibreria
 
         public override string ToString()
         {
-            return $"{nombre} - {cuit}";
+            return $"{nombre}-{cuit}";
         }
 
 

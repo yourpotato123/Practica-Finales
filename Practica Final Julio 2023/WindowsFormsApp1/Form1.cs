@@ -10,6 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Data.Filtering.Helpers.SubExprHelper.ThreadHoppingFiltering;
 
 namespace WindowsFormsApp1
 {
@@ -85,36 +86,41 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    binaryFormatter = new BinaryFormatter();
-            //    string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
-            //    if (File.Exists(ruta))
-            //    {
-            //        archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
-            //        listaFacturas = (List<Factura>)binaryFormatter.Deserialize(archivo);
-            //        archivo.Close();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                binaryFormatter = new BinaryFormatter();
+                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+                if (File.Exists(ruta))
+                {
+                    archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+                    listaFacturas = (List<Factura>)binaryFormatter.Deserialize(archivo);
+                    archivo.Close();
+                }
+
+                foreach (Factura factura in listaFacturas)
+                {
+                    lbFacturas.Items.Add(factura);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //try
-            //{
-            //    string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
-            //    archivo = new FileStream(ruta, FileMode.OpenOrCreate,FileAccess.Write);
-            //    binaryFormatter.Serialize(archivo, listaFacturas);
-            //    archivo.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                string ruta = Path.Combine(Application.StartupPath, "Datos.bin");
+                archivo = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.Write);
+                binaryFormatter.Serialize(archivo, listaFacturas);
+                archivo.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -123,24 +129,71 @@ namespace WindowsFormsApp1
             {
                 saveFileDialog1.Title = "Seleccione la ruta para guardar el archivo...";
                 saveFileDialog1.Filter = ".csv|*.csv*";
+                
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string ruta = saveFileDialog1.FileName;
-                    archivo = new FileStream(ruta,FileMode.Open, FileAccess.Write);
+                    string extension = ".csv";
+                    archivo = new FileStream(ruta+extension, FileMode.Create, FileAccess.Write);
                     escritor = new StreamWriter(archivo);
                     string lineas = "Nº Factura;Nombre y cuit;Fecha;Precio total";
+                    escritor.WriteLine(lineas);
+                    if (listaFacturas.Count > 0)
+                    {
+                        foreach (Factura factura in listaFacturas)
+                        {
+                            lineas = factura.ExportarCSV();
+                            escritor.WriteLine(lineas);
+                        }
+                    }
                 }
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error fatal. Restableciendo base de datos: " + ex.Message);
             }
+            finally 
+            {
+                escritor.Close();
+                archivo.Close();
+            }
+
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                openFileDialog1.Title = "Seleccione la ruta para abrir el archivo...";
+                openFileDialog1.Filter = ".csv|*.csv*";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = openFileDialog1.FileName;
+                    archivo = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+                    lector = new StreamReader(archivo);
+                    string[] vectorString;
+                    string vector = "";
+                    while (!lector.EndOfStream)
+                    {
+                        vector = lector.ReadLine();
+                        if (!vector.Contains("Nº"))
+                        {
+                            vectorString = vector.Split(';');
 
+                            Factura factura = new Factura();
+                            factura.ImportarDesdeCSV(vectorString);
+
+                            listaFacturas.Add(factura);
+                            lbFacturas.Items.Add(factura);
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnFacturar_Click(object sender, EventArgs e)

@@ -17,7 +17,9 @@ namespace EmpresaLibreria
         static int NroFactura=0;
 
         List<Items>ListaItems=new List<Items>();
-
+        public Factura()
+        {
+        }
 
         public Factura(string nombre, long cuit)
         {
@@ -58,7 +60,14 @@ namespace EmpresaLibreria
 
             return datos;
         }
-
+        public void ImportarDesdeCSV(string[] datos)
+        {
+            NroFactura = Convert.ToInt32(datos[0]);
+            string[] datosCliente = datos[1].Split('-');
+            cliente = new Persona(datosCliente[0],Convert.ToInt64(datosCliente[1]));
+            fechaHora = Convert.ToDateTime(datos[2]);
+            precioTotal = Convert.ToDouble(datos[3]);
+        }
 
 
 
